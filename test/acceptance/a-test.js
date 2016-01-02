@@ -7,6 +7,7 @@ describe('eslint-mocha', function() {
       console.log(error);
       console.log(stdout);
       console.log(stderr);
+      // expect(stdout).to.contain();
       done();
     });
   });
