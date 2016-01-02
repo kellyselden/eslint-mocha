@@ -4,19 +4,29 @@ var path = require('path');
 var Mocha = require('mocha');
 var utils = Mocha.utils;
 
+var argv = require('yargs')
+  .array('eslint-files')
+  .demand('eslint-files')
+  .array('mocha-files')
+  .default('mocha-files', [])
+  .argv;
+
+var eslintFiles = argv['eslint-files'];
+var mochaFiles = argv['mocha-files'];
+
+process.env.NODE_ESLINT_FILES = eslintFiles.join(',');
+
 function addFiles(mocha) {
   var files = [];
-  var originalMochaArgs = process.argv.slice(2);
-  var args = originalMochaArgs.slice();
   var extensions = ['.js'];
   var recursive = false;
   var lintTestFile = path.resolve(__dirname, 'test-file.js');
 
-  if (!args.length) {
-    args.push('test');
+  if (!mochaFiles.length) {
+    mochaFiles.push('test');
   }
 
-  args.forEach(function(arg) {
+  mochaFiles.forEach(function(arg) {
     files = files.concat(utils.lookupFiles(arg, extensions, recursive));
   });
 

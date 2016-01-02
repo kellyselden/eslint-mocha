@@ -3,7 +3,7 @@ var exec = require('child_process').exec;
 
 describe('eslint-mocha', function() {
   it('works', function(done) {
-    exec('node index.js', function(error, stdout, stderr) {
+    exec('node index.js --eslint-files test/fixtures/failure-project/**/*.js', function(error, stdout, stderr) {
       console.log(error);
       console.log(stdout);
       console.log(stderr);
