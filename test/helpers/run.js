@@ -3,7 +3,7 @@ var path = require('path');
 
 module.exports = function(args, workingDir) {
   return new Promise(function(resolve, reject) {
-    var bin = path.resolve('index.js');
+    var bin = path.resolve('bin/eslint-mocha.js');
 
     var originalWorkingDir;
     if (workingDir) {
