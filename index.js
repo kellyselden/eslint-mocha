@@ -8,7 +8,8 @@ var utils = Mocha.utils;
 var argv = yargs
   .options({
     'eslint-args': {
-      demand: true
+      demand: true,
+      requiresArg: true
     },
     'mocha-args': {
       default: ''

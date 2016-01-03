@@ -3,12 +3,13 @@ var eol = require('eol');
 var run = require('../helpers/run');
 
 describe('acceptance - failure', function() {
+  var workingDir = 'test/fixtures/failure-project';
+
   it('works', function() {
     var args = [
       '--eslint-args="**/*.js"',
       '--mocha-args="test/**/*-test.js"'
     ];
-    var workingDir = 'test/fixtures/failure-project';
     return run(args, workingDir).then(function(stdout) {
       expect(stdout).to.contain('√ this is my test');
       expect(stdout).to.contain('my-file.js passes');

@@ -2,7 +2,7 @@ var exec = require('child_process').exec;
 var path = require('path');
 
 module.exports = function(args, workingDir) {
-  return new Promise(function(resolve) {
+  return new Promise(function(resolve, reject) {
     var bin = path.resolve('index.js');
 
     var originalWorkingDir;
@@ -11,12 +11,16 @@ module.exports = function(args, workingDir) {
       process.chdir(workingDir);
     }
 
-    exec('node ' + bin + ' ' + args.join(' '), function(err, stdout) {
+    exec('node ' + bin + ' ' + args.join(' '), function(err, stdout, stderr) {
       if (originalWorkingDir) {
         process.chdir(originalWorkingDir);
       }
 
-      resolve(stdout);
+      if (stderr) {
+        reject(stderr);
+      } else {
+        resolve(stdout);
+      }
     });
   });
 };
