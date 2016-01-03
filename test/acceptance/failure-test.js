@@ -1,6 +1,9 @@
 var expect = require('chai').expect;
 var eol = require('eol');
 var run = require('../helpers/run');
+var Base = require('mocha/lib/reporters/base');
+
+var ok = Base.symbols.ok;
 
 describe('acceptance - failure', function() {
   var workingDir = 'test/fixtures/failure-project';
@@ -11,7 +14,7 @@ describe('acceptance - failure', function() {
       '--mocha-args="test/**/*-test.js"'
     ];
     return run(args, workingDir).then(function(stdout) {
-      expect(stdout).to.contain('√ this is my test');
+      expect(stdout).to.contain(ok + ' this is my test');
       expect(stdout).to.contain('my-file.js passes');
       expect(stdout).to.contain('my-test.js passes');
       expect(stdout).to.contain('1 passing');

@@ -5,10 +5,11 @@
   "main": "index.js",
   "preferGlobal": true,
   "bin": {
-    "eslint-mocha": "index.js"
+    "eslint-mocha": "bin/eslint-mocha.js"
   },
   "scripts": {
-    "test": "mocha test/acceptance/**/*-test.js"
+    "test": "mocha test/acceptance/**/*-test.js",
+    "cover": "istanbul cover node_modules/mocha/bin/mocha --include-all-sources true -- test/acceptance/**/*-test.js"
   },
   "repository": {
     "type": "git",
@@ -27,6 +28,8 @@
   },
   "devDependencies": {
     "chai": "^3.0.0",
-    "eol": "0.2.0"
+    "coveralls": "^2.0.0",
+    "eol": "0.2.0",
+    "istanbul": "0.4.1"
   }
 }
