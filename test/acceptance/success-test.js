@@ -1,5 +1,8 @@
 var expect = require('chai').expect;
 var run = require('../helpers/run');
+var Base = require('mocha/lib/reporters/base');
+
+var ok = Base.symbols.ok;
 
 describe('acceptance - success', function() {
   var workingDir = 'test/fixtures/success-project';
@@ -10,8 +13,8 @@ describe('acceptance - success', function() {
       '--mocha-args="test/**/*-test.js"'
     ];
     return run(args, workingDir).then(function(stdout) {
-      expect(stdout).to.contain('√ this is my test');
-      expect(stdout).to.contain('√ this is another test');
+      expect(stdout).to.contain(ok + ' this is my test');
+      expect(stdout).to.contain(ok + ' this is another test');
       expect(stdout).to.contain('my-file.js passes');
       expect(stdout).to.contain('my-test.js passes');
       expect(stdout).to.contain('another-test.js passes');
@@ -25,8 +28,8 @@ describe('acceptance - success', function() {
       '--mocha-args="test/my-test.js test/another-test.js"'
     ];
     return run(args, workingDir).then(function(stdout) {
-      expect(stdout).to.contain('√ this is my test');
-      expect(stdout).to.contain('√ this is another test');
+      expect(stdout).to.contain(ok + ' this is my test');
+      expect(stdout).to.contain(ok + ' this is another test');
       expect(stdout).to.contain('my-file.js passes');
       expect(stdout).to.contain('my-test.js passes');
       expect(stdout).to.contain('another-test.js passes');
@@ -40,8 +43,8 @@ describe('acceptance - success', function() {
       '--mocha-args="--recursive"'
     ];
     return run(args, workingDir).then(function(stdout) {
-      expect(stdout).to.contain('√ this is my test');
-      expect(stdout).to.contain('√ this is another test');
+      expect(stdout).to.contain(ok + ' this is my test');
+      expect(stdout).to.contain(ok + ' this is another test');
       expect(stdout).to.contain('my-file.js passes');
       expect(stdout).to.contain('my-test.js passes');
       expect(stdout).to.contain('another-test.js passes');
@@ -54,8 +57,8 @@ describe('acceptance - success', function() {
       '--eslint-args="**/*.js"'
     ];
     return run(args, workingDir).then(function(stdout) {
-      expect(stdout).to.contain('√ this is my test');
-      expect(stdout).to.contain('√ this is another test');
+      expect(stdout).to.contain(ok + ' this is my test');
+      expect(stdout).to.contain(ok + ' this is another test');
       expect(stdout).to.contain('my-file.js passes');
       expect(stdout).to.contain('my-test.js passes');
       expect(stdout).to.contain('another-test.js passes');
