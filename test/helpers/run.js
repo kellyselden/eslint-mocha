@@ -1,17 +1,18 @@
-var exec = require('child_process').exec;
-var path = require('path');
+import { exec } from 'child_process';
+import path from 'path';
 
-module.exports = function(args, workingDir) {
-  return new Promise(function(resolve, reject) {
-    var bin = path.resolve('bin/eslint-mocha.js');
+export default (args, workingDir) => {
+  return new Promise((resolve, reject) => {
+    let bin = path.resolve('bin/eslint-mocha.js');
+    args = args.join(' ');
 
-    var originalWorkingDir;
+    let originalWorkingDir;
     if (workingDir) {
       originalWorkingDir = process.cwd();
       process.chdir(workingDir);
     }
 
-    exec('node ' + bin + ' ' + args.join(' '), function(err, stdout, stderr) {
+    exec(`node ${bin} ${args}`, (err, stdout, stderr) => {
       if (originalWorkingDir) {
         process.chdir(originalWorkingDir);
       }
@@ -23,4 +24,4 @@ module.exports = function(args, workingDir) {
       }
     });
   });
-};
+}

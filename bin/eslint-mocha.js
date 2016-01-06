@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 var yargs = require('yargs');
-var eslintMocha = require('../lib/eslint-mocha');
+var eslintMocha = require('../dist/eslint-mocha').default;
 
 var argv = yargs
   .options({
@@ -40,10 +40,6 @@ var mochaArgs = parseArgs('mocha-args')
 
 var eslintFiles = eslintArgs._;
 var mochaFiles = mochaArgs._;
-
-if (!mochaFiles.length) {
-  mochaFiles.push('test');
-}
 
 eslintMocha({
   eslintFiles: eslintFiles,

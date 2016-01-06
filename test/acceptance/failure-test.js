@@ -1,15 +1,17 @@
-var expect = require('chai').expect;
-var eol = require('eol');
-var run = require('../helpers/run');
-var Base = require('mocha/lib/reporters/base');
+import { expect } from 'chai';
+import eol from 'eol';
+import run from '../helpers/run';
+import { symbols } from 'mocha/lib/reporters/base';
 
-var ok = Base.symbols.ok;
+const { ok } = symbols;
 
 describe('acceptance - failure', function() {
-  var workingDir = 'test/fixtures/failure-project';
+  this.timeout(10000);
+
+  let workingDir = 'test/fixtures/failure-project';
 
   it('works', function() {
-    var args = [
+    let args = [
       '--eslint-args="**/*.js"',
       '--mocha-args="test/**/*-test.js"'
     ];
