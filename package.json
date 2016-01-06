@@ -2,14 +2,15 @@
   "name": "eslint-mocha",
   "version": "0.0.3",
   "description": "Auto inject ESLint tests into your Mocha suite",
-  "main": "index.js",
+  "main": "lib/eslint-mocha.js",
   "preferGlobal": true,
   "bin": {
     "eslint-mocha": "bin/eslint-mocha.js"
   },
   "scripts": {
-    "test": "mocha test/acceptance/**/*-test.js",
-    "cover": "istanbul cover node_modules/mocha/bin/mocha --include-all-sources true -- test/acceptance/**/*-test.js"
+    "build": "babel lib -d dist",
+    "test": "mocha --compilers js:babel-register test/acceptance/**/*-test.js",
+    "cover": "istanbul cover node_modules/mocha/bin/mocha --include-all-sources true -- --compilers js:babel-register test/acceptance/**/*-test.js"
   },
   "repository": {
     "type": "git",
@@ -22,14 +23,18 @@
   },
   "homepage": "https://github.com/kellyselden/eslint-mocha#readme",
   "dependencies": {
+    "eol": "0.2.0",
     "eslint": "^1.0.0",
     "mocha": "^2.0.0",
     "yargs": "^3.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-preset-es2015": "^6.0.0",
+    "babel-preset-stage-2": "^6.0.0",
+    "babel-register": "^6.0.0",
     "chai": "^3.0.0",
     "coveralls": "^2.0.0",
-    "eol": "0.2.0",
     "istanbul": "0.4.1"
   }
 }
