@@ -1,0 +1,7 @@
+coverage
+lib
+test
+.babelrc
+.gitignore
+.travis.yml
+appveyor.yml

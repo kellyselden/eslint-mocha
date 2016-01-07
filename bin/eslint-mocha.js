@@ -2,6 +2,7 @@
 
 var yargs = require('yargs');
 var eslintMocha = require('../dist/eslint-mocha').default;
+var words = require('lodash/string/words');
 
 var argv = yargs
   .options({
@@ -17,10 +18,7 @@ var argv = yargs
 
 function parseArgs(option) {
   var args = argv[option];
-  args = args.split(' ');
-
-  // remove empty strings like ['']
-  args = args.filter(function(arg) { return arg; });
+  args = words(args, /[^ ]+/g);
 
   yargs.reset();
 
@@ -34,6 +32,9 @@ var mochaArgs = parseArgs('mocha-args')
   .options({
     'recursive': {
       type: 'boolean'
+    },
+    'compilers': {
+      default: ''
     }
   })
   .argv;
@@ -41,8 +42,11 @@ var mochaArgs = parseArgs('mocha-args')
 var eslintFiles = eslintArgs._;
 var mochaFiles = mochaArgs._;
 
+var mochaCompilers = words(mochaArgs.compilers, /[^,]+/g);
+
 eslintMocha({
   eslintFiles: eslintFiles,
   mochaFiles: mochaFiles,
-  isMochaRecursive: mochaArgs.recursive
+  isMochaRecursive: mochaArgs.recursive,
+  mochaCompilers: mochaCompilers
 });

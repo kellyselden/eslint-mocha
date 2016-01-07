@@ -39,22 +39,7 @@ describe('acceptance - success', function() {
     });
   });
 
-  it.skip('handles mocha recursive', function() {
-    let args = [
-      '--eslint-args="**/*.js"',
-      '--mocha-args="--compilers js:babel-register"'
-    ];
-    return run(args, workingDir).then(stdout => {
-      expect(stdout).to.contain(`${ok} this is my test`);
-      expect(stdout).to.contain(`${ok} this is another test`);
-      expect(stdout).to.contain('my-file.js passes');
-      expect(stdout).to.contain('my-test.js passes');
-      expect(stdout).to.contain('another-test.js passes');
-      expect(stdout).to.contain('5 passing');
-    });
-  });
-
-  it('handles mocha compilers', function() {
+  it('handles mocha recursive', function() {
     let args = [
       '--eslint-args="**/*.js"',
       '--mocha-args="--recursive"'
