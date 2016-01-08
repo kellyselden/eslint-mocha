@@ -16,7 +16,7 @@ describe('acceptance - failure', function() {
       '--mocha-args="test/**/*-test.js"'
     ];
     return run(args, workingDir).then(function(stdout) {
-      expect(stdout).to.contain(ok + ' this is my test');
+      expect(stdout).to.contain(`${ok} this is my test`);
       expect(stdout).to.contain('my-file.js passes');
       expect(stdout).to.contain('my-test.js passes');
       expect(stdout).to.contain('1 passing');
