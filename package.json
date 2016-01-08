@@ -2,7 +2,7 @@
   "name": "eslint-mocha",
   "version": "0.0.4",
   "description": "Auto inject ESLint tests into your Mocha suite",
-  "main": "lib/eslint-mocha.js",
+  "main": "dist/eslint-mocha.js",
   "preferGlobal": true,
   "bin": {
     "eslint-mocha": "bin/eslint-mocha.js"
