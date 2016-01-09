@@ -12,7 +12,8 @@
     "pretest": "npm run build",
     "precover": "npm run build",
     "test": "mocha --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\"",
-    "cover": "babel-node node_modules/isparta/bin/isparta cover --include-all-sources node_modules/mocha/bin/_mocha -- --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\""
+    "cover": "babel-node node_modules/isparta/bin/isparta cover --include-all-sources node_modules/mocha/bin/_mocha -- --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\"",
+    "debug": "node debug node_modules/mocha/bin/_mocha --compilers js:babel-register \"test/unit/**/*-test.js\""
   },
   "repository": {
     "type": "git",
@@ -33,11 +34,13 @@
   },
   "devDependencies": {
     "babel-cli": "^6.0.0",
+    "babel-plugin-rewire": "1.0.0-beta-3",
     "babel-preset-es2015": "^6.0.0",
     "babel-preset-stage-2": "^6.0.0",
     "babel-register": "^6.0.0",
     "chai": "^3.0.0",
     "coveralls": "^2.0.0",
-    "isparta": "^4.0.0"
+    "isparta": "^4.0.0",
+    "sinon": "^1.0.0"
   }
 }
