@@ -13,7 +13,7 @@
     "precover": "npm run build",
     "test": "mocha --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\" test/lint.js assets/test-file.js",
     "cover": "babel-node node_modules/isparta/bin/isparta cover --include-all-sources --report html --report lcov node_modules/mocha/bin/_mocha -- --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\" test/lint.js assets/test-file.js",
-    "debug": "node debug node_modules/mocha/bin/_mocha --timeout 600000 --compilers js:babel-register \"test/unit/**/*-test.js\"",
+    "debug": "node debug node_modules/mocha/bin/_mocha --no-timeouts --compilers js:babel-register \"test/unit/**/*-test.js\"",
     "lint": "mocha test/lint.js assets/test-file.js"
   },
   "repository": {
