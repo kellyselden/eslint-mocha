@@ -11,4 +11,5 @@ rules:
 env:
   node: true
   mocha: true
+root: true
 extends: 'eslint:recommended'

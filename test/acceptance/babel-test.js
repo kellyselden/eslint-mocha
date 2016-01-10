@@ -1,5 +1,4 @@
 import { expect } from 'chai';
-import eol from 'eol';
 import run from '../helpers/run';
 import { symbols } from 'mocha/lib/reporters/base';
 

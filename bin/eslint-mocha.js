@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/*eslint no-var: 0*/
 
 var yargs = require('yargs');
 var eslintMocha = require('../dist/eslint-mocha').default;
