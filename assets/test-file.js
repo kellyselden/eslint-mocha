@@ -1,10 +1,12 @@
+/*eslint no-var: 0*/
+
 var assert = require('assert');
 var CLIEngine = require('eslint').CLIEngine;
 var eol = require('eol');
 
 var cli = new CLIEngine();
 
-var files = process.env.NODE_ESLINT_FILES.split(',');
+var files = process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES.split(',');
 
 var results = cli.executeOnFiles(files).results;
 

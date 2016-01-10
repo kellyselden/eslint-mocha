@@ -7,8 +7,8 @@ describe('unit - eslint/initialize', function() {
   let env, resolve;
 
   beforeEach(function() {
-    env = process.env.NODE_ESLINT_FILES;
-    process.env.NODE_ESLINT_FILES = '';
+    env = process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES;
+    process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES = '';
 
     initialize.__Rewire__('path', {
       resolve: resolve = sinon.stub()
@@ -16,7 +16,7 @@ describe('unit - eslint/initialize', function() {
   });
 
   afterEach(function() {
-    process.env.NODE_ESLINT_FILES = env;
+    process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES = env;
 
     initialize.__ResetDependency__('path');
   });
@@ -26,7 +26,7 @@ describe('unit - eslint/initialize', function() {
       eslintFiles: ['test-file-1', 'test-file-2']
     });
 
-    expect(process.env.NODE_ESLINT_FILES).to.equal('test-file-1,test-file-2');
+    expect(process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES).to.equal('test-file-1,test-file-2');
   });
 
   it('returns test file path', function() {

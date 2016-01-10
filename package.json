@@ -11,9 +11,10 @@
     "build": "babel lib -d dist",
     "pretest": "npm run build",
     "precover": "npm run build",
-    "test": "mocha --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\"",
-    "cover": "babel-node node_modules/isparta/bin/isparta cover --include-all-sources --report html node_modules/mocha/bin/_mocha -- --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\"",
-    "debug": "node debug node_modules/mocha/bin/_mocha --compilers js:babel-register \"test/unit/**/*-test.js\""
+    "test": "mocha --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\" test/lint.js assets/test-file.js",
+    "cover": "babel-node node_modules/isparta/bin/isparta cover --include-all-sources --report html --report lcov node_modules/mocha/bin/_mocha -- --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\" test/lint.js assets/test-file.js",
+    "debug": "node debug node_modules/mocha/bin/_mocha --compilers js:babel-register \"test/unit/**/*-test.js\"",
+    "lint": "mocha test/lint.js assets/test-file.js"
   },
   "repository": {
     "type": "git",
