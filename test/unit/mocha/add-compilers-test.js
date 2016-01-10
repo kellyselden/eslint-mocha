@@ -1,9 +1,12 @@
 import { expect } from 'chai';
+import sinon from 'sinon';
 import addCompilers from '../../../lib/mocha/add-compilers';
 
-describe('unit - mocha/addCompilers', function() {
+describe('unit - mocha/add-compilers', function() {
+  let _require;
+
   beforeEach(function() {
-    addCompilers.__Rewire__('_require', () => {});
+    addCompilers.__Rewire__('_require', _require = sinon.stub());
   });
 
   afterEach(function() {
@@ -32,14 +35,10 @@ describe('unit - mocha/addCompilers', function() {
     let compilers = [':test-mod'];
     let extensions = [];
 
-    let wasCalled;
-    addCompilers.__Rewire__('_require', module => {
-      expect(module).to.equal('test-mod');
-      wasCalled = true;
-    });
-
     addCompilers(compilers, extensions);
 
-    expect(wasCalled).to.be.true;
+    expect(_require.args).to.deep.equal([
+      ['test-mod']
+    ]);
   });
 });
