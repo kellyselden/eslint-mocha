@@ -9,6 +9,7 @@
   },
   "scripts": {
     "build": "babel lib -d dist",
+    "prepublish": "npm run build",
     "pretest": "npm run build",
     "precover": "npm run build",
     "test": "mocha --compilers js:babel-register \"test/@(acceptance|unit)/**/*-test.js\" test/lint.js assets/test-file.js",
