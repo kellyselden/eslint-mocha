@@ -21,7 +21,7 @@
     "type": "git",
     "url": "git+https://github.com/kellyselden/eslint-mocha.git"
   },
-  "author": "",
+  "author": "Kelly Selden <kellyselden@gmail.com> (https://github.com/kellyselden)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kellyselden/eslint-mocha/issues"
