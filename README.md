@@ -10,11 +10,19 @@
 
 Auto inject ESLint tests into your Mocha suite.
 
+###Installation
+
+```sh
+npm install eslint-mocha
+```
+
+###Usage
+
 ```sh
 eslint-mocha --eslint-args="my eslint args" --mocha-args="my mocha args"
 ```
 
-Example:
+###Example
 
 ```sh
 eslint-mocha --eslint-args="**/*.js" --mocha-args="test/**/*-test.js"
