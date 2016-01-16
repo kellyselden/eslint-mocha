@@ -3,7 +3,7 @@
 
 var yargs = require('yargs');
 var eslintMocha = require('../dist/eslint-mocha').default;
-var words = require('lodash/string/words');
+var words = require('lodash/words');
 
 var argv = yargs
   .options({
