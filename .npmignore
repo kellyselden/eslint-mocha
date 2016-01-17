@@ -1,9 +1,4 @@
 coverage
 lib
 test
-.babelrc
-.eslintrc.yml
-.gitignore
-.istanbul.yml
-.travis.yml
-appveyor.yml
+*
