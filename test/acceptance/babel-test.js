@@ -21,4 +21,14 @@ describe('acceptance - babel', function() {
       expect(stdout).to.contain('3 passing');
     });
   });
+
+  it('handles multiple compilers', function() {
+    let args = [
+      '--eslint-args="**/*.js"',
+      '--mocha-args="--compilers js:babel-register,coffee:coffee-script test/**/*-test.js"'
+    ];
+    return run(args, workingDir).catch(function(stderr) {
+      expect(stderr).to.contain('Error: Cannot find module \'coffee-script\'');
+    });
+  });
 });
