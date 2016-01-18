@@ -19,7 +19,6 @@ var argv = yargs
 
 function parseArgs(option) {
   var args = argv[option];
-  args = words(args, /[^ ]+/g);
 
   yargs.reset();
 
