@@ -16,6 +16,8 @@ Auto inject ESLint tests into your Mocha suite.
 npm install eslint-mocha
 ```
 
+You also need `eslint` and `mocha` as dependencies.
+
 ###Usage
 
 ```sh
