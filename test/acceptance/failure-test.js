@@ -27,9 +27,9 @@ describe('acceptance - failure', function() {
       -1\n\
       +0');
       expect(stdout).to.contain(eol.auto('\n\
-        Line 4: "describe" is not defined.\n\
+        Line 4: \'describe\' is not defined.\n\
         Line 5: Expected indentation of 4 space characters but found 2.\n\
-        Line 5: "it" is not defined.\n\
+        Line 5: \'it\' is not defined.\n\
         Line 6: Expected indentation of 6 space characters but found 4.'));
       expect(stdout).to.contain('\n\
       -4\n\
