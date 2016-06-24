@@ -17,8 +17,13 @@ export default (args, workingDir) => {
         process.chdir(originalWorkingDir);
       }
 
-      if (stderr) {
+      let hasRuntimeError = stderr;
+      let hasTestError = err;
+
+      if (hasRuntimeError) {
         reject(stderr);
+      } else if (hasTestError) {
+        reject(stdout);
       } else {
         resolve(stdout);
       }
