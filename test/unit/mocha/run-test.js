@@ -62,6 +62,7 @@ describe('unit - mocha/run', function() {
   it('runs mocha', function() {
     run(null, {});
 
-    expect(mochaRun.args).to.deep.equal([[]]);
+    expect(mochaRun.args.length).to.equal(1);
+    expect(mochaRun.args[0].length).to.equal(1);
   });
 });
