@@ -53,5 +53,8 @@
   "keywords": [
     "eslint",
     "mocha"
-  ]
+  ],
+  "engines": {
+    "node": ">= 0.12.0"
+  }
 }
