@@ -30,7 +30,7 @@
   "dependencies": {
     "eol": "0.3.0",
     "lodash": "^4.0.0",
-    "yargs": "^5.0.0"
+    "yargs": "^6.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.0.0",
