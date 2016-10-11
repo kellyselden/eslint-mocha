@@ -28,7 +28,7 @@
   },
   "homepage": "https://github.com/kellyselden/eslint-mocha#readme",
   "dependencies": {
-    "eol": "0.3.0",
+    "eol": "0.4.0",
     "lodash": "^4.0.0",
     "yargs": "^6.0.0"
   },
