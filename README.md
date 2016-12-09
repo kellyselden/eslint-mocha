@@ -10,7 +10,7 @@
 [![devDependencies Status](https://david-dm.org/kellyselden/eslint-mocha/dev-status.svg)](https://david-dm.org/kellyselden/eslint-mocha?type=dev)
 [![peerDependencies Status](https://david-dm.org/kellyselden/eslint-mocha/peer-status.svg)](https://david-dm.org/kellyselden/eslint-mocha?type=peer)
 
-Auto inject ESLint tests into your Mocha suite.
+Auto inject ESLint tests into your Mocha suite. This is a zero-code alternative to [mocha-eslint](https://github.com/BadgeLabs/mocha-eslint), where you need to write some boilerplate code to get up and running.
 
 ### Installation
 
