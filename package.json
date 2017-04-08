@@ -13,7 +13,9 @@
     "test": "mocha --compilers js:babel-register \"test/!(fixtures)/**/*-test.js\" test/lint.js assets/test-file.js",
     "cover": "babel-node node_modules/isparta/bin/isparta cover --include-all-sources --report html --report lcov node_modules/mocha/bin/_mocha -- --compilers js:babel-register \"test/!(fixtures)/**/*-test.js\" test/lint.js assets/test-file.js",
     "debug": "node debug node_modules/mocha/bin/_mocha --no-timeouts --compilers js:babel-register \"test/unit/**/*-test.js\"",
-    "lint": "mocha test/lint.js assets/test-file.js"
+    "prelint": "eslint --version",
+    "lint": "eslint assets/**/*.js bin/**/*.js lib/**/*.js \"test/!(fixtures)/**/*.js\"",
+    "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
     "type": "git",
