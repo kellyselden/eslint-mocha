@@ -62,7 +62,7 @@ describe('unit - eslint/initialize', function() {
     });
 
     expect(resolve.args).to.deep.equal([
-      [path.resolve('lib/eslint'), '../../assets/test-file.js']
+      [path.resolve('lib/eslint'), '../assets/test-file.js']
     ]);
     expect(testFile).to.equal('resolved-test-path');
   });
