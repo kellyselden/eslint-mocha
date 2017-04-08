@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+'use strict';
 
-import yargs from 'yargs';
-import eslintMocha from '../eslint-mocha';
-import words from 'lodash/words';
+const yargs = require('yargs');
+const eslintMocha = require('../dist/eslint-mocha').default;
+const words = require('lodash/words');
 
 let argv = yargs
   .options({
