@@ -14,7 +14,7 @@ describe('acceptance - success', function() {
       '--eslint-args="**/*.js"',
       '--mocha-args="test/**/*-test.js"'
     ];
-    return run(args, workingDir).then(stdout => {
+    return run(args, workingDir).then(({ stdout }) => {
       expect(stdout).to.contain(`${ok} this is my test`);
       expect(stdout).to.contain(`${ok} this is another test`);
       expect(stdout).to.contain('my-file.js passes');
@@ -29,7 +29,7 @@ describe('acceptance - success', function() {
       '--eslint-args="lib/**/*.js test/**/*.js"',
       '--mocha-args="test/my-test.js test/another-test.js"'
     ];
-    return run(args, workingDir).then(stdout => {
+    return run(args, workingDir).then(({ stdout }) => {
       expect(stdout).to.contain(`${ok} this is my test`);
       expect(stdout).to.contain(`${ok} this is another test`);
       expect(stdout).to.contain('my-file.js passes');
@@ -44,7 +44,7 @@ describe('acceptance - success', function() {
       '--eslint-args="**/*.js"',
       '--mocha-args="--recursive"'
     ];
-    return run(args, workingDir).then(stdout => {
+    return run(args, workingDir).then(({ stdout }) => {
       expect(stdout).to.contain(`${ok} this is my test`);
       expect(stdout).to.contain(`${ok} this is another test`);
       expect(stdout).to.contain('my-file.js passes');
@@ -58,7 +58,7 @@ describe('acceptance - success', function() {
     let args = [
       '--eslint-args="**/*.js"'
     ];
-    return run(args, workingDir).then(stdout => {
+    return run(args, workingDir).then(({ stdout }) => {
       expect(stdout).to.contain(`${ok} this is my test`);
       expect(stdout).to.contain(`${ok} this is another test`);
       expect(stdout).to.contain('my-file.js passes');
@@ -70,13 +70,9 @@ describe('acceptance - success', function() {
   it('errors without --eslint-args', function() {
     let args = [
     ];
-    let hasCatchRun;
-    return run(args).catch(stderr => {
+    return run(args).then(({ stdout, stderr }) => {
+      expect(stdout).to.be.empty;
       expect(stderr).to.contain('Missing required argument: eslint-args');
-      hasCatchRun = true;
-    }).then(stdout => {
-      expect(stdout).to.be.undefined;
-      expect(hasCatchRun).to.be.true;
     });
   });
 
@@ -84,13 +80,24 @@ describe('acceptance - success', function() {
     let args = [
       '--eslint-args'
     ];
-    let hasCatchRun;
-    return run(args).catch(stderr => {
+    return run(args).then(({ stdout, stderr }) => {
+      expect(stdout).to.be.empty;
       expect(stderr).to.contain('Missing argument value: eslint-args');
-      hasCatchRun = true;
-    }).then(stdout => {
-      expect(stdout).to.be.undefined;
-      expect(hasCatchRun).to.be.true;
+    });
+  });
+
+  it('handles eslint debug', function() {
+    let args = [
+      '--eslint-args="--debug **/*.js"'
+    ];
+    return run(args, workingDir).then(({ stdout, stderr }) => {
+      expect(stdout).to.contain(`${ok} this is my test`);
+      expect(stdout).to.contain(`${ok} this is another test`);
+      expect(stdout).to.contain('my-file.js passes');
+      expect(stdout).to.contain('my-test.js passes');
+      expect(stdout).to.contain('another-test.js passes');
+
+      expect(stderr).to.contain('eslint:glob-util Creating list of files to process.');
     });
   });
 });

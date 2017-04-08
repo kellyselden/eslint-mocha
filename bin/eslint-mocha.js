@@ -26,6 +26,11 @@ function parseArgs(option) {
 }
 
 var eslintArgs = parseArgs('eslint-args')
+  .options({
+    'debug': {
+      type: 'boolean'
+    }
+  })
   .argv;
 
 var mochaArgs = parseArgs('mocha-args')
@@ -47,6 +52,7 @@ var mochaCompilers = words(mochaArgs.compilers, /[^,]+/g);
 eslintMocha({
   eslintFiles: eslintFiles,
   mochaFiles: mochaFiles,
+  isEslintDebug: eslintArgs.debug,
   isMochaRecursive: mochaArgs.recursive,
   mochaCompilers: mochaCompilers
 });
