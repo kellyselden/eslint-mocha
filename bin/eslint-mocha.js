@@ -50,9 +50,13 @@ var mochaFiles = mochaArgs._;
 var mochaCompilers = words(mochaArgs.compilers, /[^,]+/g);
 
 eslintMocha({
-  eslintFiles: eslintFiles,
-  mochaFiles: mochaFiles,
-  isEslintDebug: eslintArgs.debug,
-  isMochaRecursive: mochaArgs.recursive,
-  mochaCompilers: mochaCompilers
+  eslint: {
+    files: eslintFiles,
+    isDebug: eslintArgs.debug
+  },
+  mocha: {
+    files: mochaFiles,
+    isRecursive: mochaArgs.recursive,
+    compilers: mochaCompilers
+  }
 });

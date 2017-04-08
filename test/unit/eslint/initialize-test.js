@@ -31,7 +31,7 @@ describe('unit - eslint/initialize', function() {
 
   it('sets files env variable', function() {
     initialize({
-      eslintFiles: ['test-file-1', 'test-file-2']
+      files: ['test-file-1', 'test-file-2']
     });
 
     expect(process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES).to.equal('test-file-1,test-file-2');
@@ -39,7 +39,7 @@ describe('unit - eslint/initialize', function() {
 
   it('doesn\'t set debug env variable', function() {
     initialize({
-      eslintFiles: []
+      files: []
     });
 
     expect(process.env.NPM_PACKAGE_CONFIG_ESLINT_DEBUG).to.equal('');
@@ -47,8 +47,8 @@ describe('unit - eslint/initialize', function() {
 
   it('sets debug env variable', function() {
     initialize({
-      eslintFiles: [],
-      isEslintDebug: true
+      files: [],
+      isDebug: true
     });
 
     expect(process.env.NPM_PACKAGE_CONFIG_ESLINT_DEBUG).to.equal('eslint:*,-eslint:code-path');
@@ -58,7 +58,7 @@ describe('unit - eslint/initialize', function() {
     resolve.returns('resolved-test-path');
 
     let testFile = initialize({
-      eslintFiles: []
+      files: []
     });
 
     expect(resolve.args).to.deep.equal([

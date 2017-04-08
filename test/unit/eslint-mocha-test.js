@@ -17,13 +17,15 @@ describe('unit - eslint-mocha', function() {
 
   it('calls initEslint correctly', function() {
     eslintMocha({
-      'test-prop': 'test-val'
+      eslint: {
+        testProp: 'test-val'
+      }
     });
 
     expect(initEslint.args).to.deep.equal([
       [
         {
-          'test-prop': 'test-val'
+          testProp: 'test-val'
         }
       ]
     ]);
@@ -33,15 +35,46 @@ describe('unit - eslint-mocha', function() {
     initEslint.returns('test-lint-file');
 
     eslintMocha({
-      'test-prop': 'test-val'
+      mocha: {
+        testProp: 'test-val'
+      }
     });
 
     expect(runMocha.args).to.deep.equal([
       [
         'test-lint-file',
         {
-          'test-prop': 'test-val'
+          testProp: 'test-val'
         }
+      ]
+    ]);
+  });
+
+  it('doesn\'t call initEslint with mocha options', function() {
+    eslintMocha({
+      mocha: {
+        testProp: 'test-val'
+      }
+    });
+
+    expect(initEslint.args).to.deep.equal([
+      [
+        undefined
+      ]
+    ]);
+  });
+
+  it('doesn\'t call runMocha with eslint options', function() {
+    eslintMocha({
+      eslint: {
+        testProp: 'test-val'
+      }
+    });
+
+    expect(runMocha.args).to.deep.equal([
+      [
+        undefined,
+        undefined
       ]
     ]);
   });
