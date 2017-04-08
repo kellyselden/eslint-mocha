@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-/*eslint no-var: 0*/
+'use strict';
 
-var yargs = require('yargs');
-var eslintMocha = require('../dist/eslint-mocha').default;
-var words = require('lodash/words');
+const yargs = require('yargs');
+const eslintMocha = require('../dist/eslint-mocha').default;
+const words = require('lodash/words');
 
-var argv = yargs
+let argv = yargs
   .options({
     'eslint-args': {
       demand: true,
@@ -18,14 +18,14 @@ var argv = yargs
   .argv;
 
 function parseArgs(option) {
-  var args = argv[option];
+  let args = argv[option];
 
   yargs.reset();
 
   return yargs(args);
 }
 
-var eslintArgs = parseArgs('eslint-args')
+let eslintArgs = parseArgs('eslint-args')
   .options({
     'debug': {
       type: 'boolean'
@@ -33,7 +33,7 @@ var eslintArgs = parseArgs('eslint-args')
   })
   .argv;
 
-var mochaArgs = parseArgs('mocha-args')
+let mochaArgs = parseArgs('mocha-args')
   .options({
     'recursive': {
       type: 'boolean'
@@ -44,10 +44,10 @@ var mochaArgs = parseArgs('mocha-args')
   })
   .argv;
 
-var eslintFiles = eslintArgs._;
-var mochaFiles = mochaArgs._;
+let eslintFiles = eslintArgs._;
+let mochaFiles = mochaArgs._;
 
-var mochaCompilers = words(mochaArgs.compilers, /[^,]+/g);
+let mochaCompilers = words(mochaArgs.compilers, /[^,]+/g);
 
 eslintMocha({
   eslint: {
