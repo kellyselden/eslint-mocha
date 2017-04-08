@@ -3,7 +3,7 @@ import path from 'path';
 
 export default (args, workingDir) => {
   return new Promise(resolve => {
-    let bin = path.resolve('dist/bin/eslint-mocha.js');
+    let bin = path.resolve('bin/eslint-mocha.js');
     args = args.join(' ');
 
     let originalWorkingDir;
