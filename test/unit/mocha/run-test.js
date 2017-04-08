@@ -21,7 +21,7 @@ describe('unit - mocha/run', function() {
 
   it('calls addCompilers correctly', function() {
     run(null, {
-      mochaCompilers: ['test-compilers']
+      compilers: ['test-compilers']
     });
 
     expect(addCompilers.args).to.deep.equal([
@@ -30,7 +30,7 @@ describe('unit - mocha/run', function() {
   });
 
   it('calls addFiles correctly', function() {
-    run.__Rewire__('addCompilers', (mochaCompilers, extensions) => {
+    run.__Rewire__('addCompilers', (compilers, extensions) => {
       extensions.pop();
       extensions.push('test-ext');
     });
@@ -40,8 +40,8 @@ describe('unit - mocha/run', function() {
     run.__Rewire__('Mocha', Mocha);
 
     run('lint-test-file', {
-      mochaFiles: ['mocha-file-test'],
-      isMochaRecursive: true
+      files: ['mocha-file-test'],
+      isRecursive: true
     });
 
     expect(addFiles.callCount).to.equal(1);
