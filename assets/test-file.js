@@ -1,5 +1,7 @@
 /*eslint no-var: 0*/
 
+require('debug').enable(process.env.NPM_PACKAGE_CONFIG_ESLINT_DEBUG);
+
 var assert = require('assert');
 var CLIEngine = require('eslint').CLIEngine;
 var eol = require('eol');

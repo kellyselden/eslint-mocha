@@ -2,7 +2,7 @@ import { exec } from 'child_process';
 import path from 'path';
 
 export default (args, workingDir) => {
-  return new Promise((resolve, reject) => {
+  return new Promise(resolve => {
     let bin = path.resolve('bin/eslint-mocha.js');
     args = args.join(' ');
 
@@ -17,16 +17,11 @@ export default (args, workingDir) => {
         process.chdir(originalWorkingDir);
       }
 
-      let hasRuntimeError = stderr;
-      let hasTestError = err;
-
-      if (hasRuntimeError) {
-        reject(stderr);
-      } else if (hasTestError) {
-        reject(stdout);
-      } else {
-        resolve(stdout);
-      }
+      resolve({
+        err,
+        stdout,
+        stderr
+      });
     });
   });
 };

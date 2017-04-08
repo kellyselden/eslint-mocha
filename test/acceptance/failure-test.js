@@ -15,7 +15,7 @@ describe('acceptance - failure', function() {
       '--eslint-args="**/*.js"',
       '--mocha-args="test/**/*-test.js"'
     ];
-    return run(args, workingDir).catch(stdout => {
+    return run(args, workingDir).catch(({ stdout }) => {
       expect(stdout).to.contain(`${ok} this is my test`);
       expect(stdout).to.contain('my-file.js passes');
       expect(stdout).to.contain('my-test.js passes');

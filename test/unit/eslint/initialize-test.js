@@ -4,11 +4,16 @@ import path from 'path';
 import initialize from '../../../lib/eslint/initialize';
 
 describe('unit - eslint/initialize', function() {
-  let env, resolve;
+  let resolve;
+
+  let {
+    NPM_PACKAGE_CONFIG_ESLINT_FILES,
+    NPM_PACKAGE_CONFIG_ESLINT_DEBUG
+  } = process.env;
 
   beforeEach(function() {
-    env = process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES;
     process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES = '';
+    process.env.NPM_PACKAGE_CONFIG_ESLINT_DEBUG = '';
 
     initialize.__Rewire__('path', {
       resolve: resolve = sinon.stub()
@@ -16,17 +21,37 @@ describe('unit - eslint/initialize', function() {
   });
 
   afterEach(function() {
-    process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES = env;
-
     initialize.__ResetDependency__('path');
   });
 
-  it('sets environment variable', function() {
+  after(function() {
+    process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES = NPM_PACKAGE_CONFIG_ESLINT_FILES;
+    process.env.NPM_PACKAGE_CONFIG_ESLINT_DEBUG = NPM_PACKAGE_CONFIG_ESLINT_DEBUG;
+  });
+
+  it('sets files env variable', function() {
     initialize({
       eslintFiles: ['test-file-1', 'test-file-2']
     });
 
     expect(process.env.NPM_PACKAGE_CONFIG_ESLINT_FILES).to.equal('test-file-1,test-file-2');
+  });
+
+  it('doesn\'t set debug env variable', function() {
+    initialize({
+      eslintFiles: []
+    });
+
+    expect(process.env.NPM_PACKAGE_CONFIG_ESLINT_DEBUG).to.equal('');
+  });
+
+  it('sets debug env variable', function() {
+    initialize({
+      eslintFiles: [],
+      isEslintDebug: true
+    });
+
+    expect(process.env.NPM_PACKAGE_CONFIG_ESLINT_DEBUG).to.equal('eslint:*,-eslint:code-path');
   });
 
   it('returns test file path', function() {
