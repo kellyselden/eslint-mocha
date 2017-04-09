@@ -4,7 +4,7 @@
   "description": "Auto inject ESLint tests into your Mocha suite",
   "main": "dist/eslint-mocha.js",
   "bin": {
-    "eslint-mocha": "bin/eslint-mocha.js"
+    "eslint-mocha": "dist/bin/eslint-mocha.js"
   },
   "scripts": {
     "prebuild": "rimraf dist",
@@ -16,7 +16,7 @@
     "cover": "babel-node node_modules/isparta/bin/isparta cover --include-all-sources --report html --report lcov node_modules/mocha/bin/_mocha -- --compilers js:babel-register \"test/!(fixtures)/**/*-test.js\" test/lint.js lib/assets/test-file.js",
     "debug": "node debug node_modules/mocha/bin/_mocha --no-timeouts --compilers js:babel-register \"test/unit/**/*-test.js\"",
     "prelint": "eslint --version",
-    "lint": "eslint bin lib \"test/!(fixtures)/**/*\"",
+    "lint": "eslint lib \"test/!(fixtures)/**/*\"",
     "lint:fix": "npm run lint -- --fix"
   },
   "repository": {
