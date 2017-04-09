@@ -1,0 +1,33 @@
+{
+  "name": "eslint-mocha2",
+  "version": "0.2.0",
+  "description": "Auto inject ESLint tests into your Mocha suite",
+  "main": "dist/eslint-mocha.js",
+  "scripts": {
+    "test": "eslint-mocha --eslint-args=\"lib test\" --mocha-args=\"test/**/*-test.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellyselden/eslint-mocha.git"
+  },
+  "author": "Kelly Selden <kellyselden@gmail.com> (https://github.com/kellyselden)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kellyselden/eslint-mocha/issues"
+  },
+  "homepage": "https://github.com/kellyselden/eslint-mocha#readme",
+  "dependencies": {
+    "eslint-mocha": "*"
+  },
+  "peerDependencies": {
+    "eslint": ">=1 <4",
+    "mocha": ">=1 <4"
+  },
+  "keywords": [
+    "eslint",
+    "mocha"
+  ],
+  "engines": {
+    "node": ">= 4"
+  }
+}
