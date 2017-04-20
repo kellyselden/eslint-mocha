@@ -51,7 +51,7 @@
     "sinon": "^2.0.0"
   },
   "peerDependencies": {
-    "eslint": ">=1 <4",
+    "eslint": ">=3.7.1",
     "mocha": ">=1 <4"
   },
   "keywords": [
