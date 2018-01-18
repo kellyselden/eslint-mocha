@@ -67,15 +67,6 @@ describe('acceptance - success', function() {
     });
   });
 
-  it('errors without --eslint-args', function() {
-    let args = [
-    ];
-    return run(args).then(({ stdout, stderr }) => {
-      expect(stdout).to.be.empty;
-      expect(stderr).to.contain('Missing required argument: eslint-args');
-    });
-  });
-
   it('errors with blank --eslint-args', function() {
     let args = [
       '--eslint-args'
