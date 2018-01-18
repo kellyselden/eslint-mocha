@@ -53,7 +53,7 @@
   },
   "peerDependencies": {
     "eslint": ">=1 <5",
-    "mocha": ">=1 <5"
+    "mocha": ">=1 <6"
   },
   "keywords": [
     "eslint",
