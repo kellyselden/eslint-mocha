@@ -73,7 +73,7 @@ describe('acceptance - success', function() {
     ];
     return run(args).then(({ stdout, stderr }) => {
       expect(stdout).to.be.empty;
-      expect(stderr).to.contain('Missing argument value: eslint-args');
+      expect(stderr).to.contain('Not enough arguments following: eslint-args');
     });
   });
 
