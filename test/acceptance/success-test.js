@@ -88,7 +88,7 @@ describe('acceptance - success', function() {
       expect(stdout).to.contain('my-test.js passes');
       expect(stdout).to.contain('another-test.js passes');
 
-      expect(stderr).to.contain('eslint:glob-util Creating list of files to process.');
+      expect(stderr).to.contain('eslint:glob-utils Creating list of files to process.');
     });
   });
 });
