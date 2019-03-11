@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import addFiles from '../../../lib/mocha/add-files';
 
 describe('unit - mocha/add-files', function() {
-  let mocha, addFile;
+  let mocha; let addFile;
 
   beforeEach(function() {
     addFiles.__Rewire__('utils', {

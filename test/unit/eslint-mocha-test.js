@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import eslintMocha from '../../lib/eslint-mocha';
 
 describe('unit - eslint-mocha', function() {
-  let initEslint, runMocha;
+  let initEslint; let runMocha;
 
   beforeEach(function() {
     eslintMocha.__Rewire__('initEslint', initEslint = sinon.stub());

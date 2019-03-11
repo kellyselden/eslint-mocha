@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import run from '../../../lib/mocha/run';
 
 describe('unit - mocha/run', function() {
-  let addCompilers, addFiles, Mocha, mochaRun;
+  let addCompilers; let addFiles; let Mocha; let mochaRun;
 
   beforeEach(function() {
     run.__Rewire__('addCompilers', addCompilers = sinon.stub());
