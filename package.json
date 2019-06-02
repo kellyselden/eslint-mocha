@@ -9,7 +9,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "babel lib -d dist",
-    "prepublish": "npm run build",
+    "prepare": "npm run build",
     "pretest": "npm run build",
     "precover": "npm run build",
     "test": "mocha --compilers js:babel-register \"test/!(fixtures)/**/*-test.js\" test/lint.js lib/assets/test-file.js",
