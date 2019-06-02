@@ -30,11 +30,6 @@ describe('acceptance - success', function() {
       '--mocha-args="test/my-test.js test/another-test.js"'
     ];
     return run(args, workingDir).then(({ stdout }) => {
-      expect(stdout).to.contain(`${ok} this is my test`);
-      expect(stdout).to.contain(`${ok} this is another test`);
-      expect(stdout).to.contain('my-file.js passes');
-      expect(stdout).to.contain('my-test.js passes');
-      expect(stdout).to.contain('another-test.js passes');
       expect(stdout).to.contain('5 passing');
     });
   });
@@ -45,11 +40,6 @@ describe('acceptance - success', function() {
       '--mocha-args="--recursive"'
     ];
     return run(args, workingDir).then(({ stdout }) => {
-      expect(stdout).to.contain(`${ok} this is my test`);
-      expect(stdout).to.contain(`${ok} this is another test`);
-      expect(stdout).to.contain('my-file.js passes');
-      expect(stdout).to.contain('my-test.js passes');
-      expect(stdout).to.contain('another-test.js passes');
       expect(stdout).to.contain('5 passing');
     });
   });
@@ -59,11 +49,7 @@ describe('acceptance - success', function() {
       '--eslint-args="**/*.js"'
     ];
     return run(args, workingDir).then(({ stdout }) => {
-      expect(stdout).to.contain(`${ok} this is my test`);
-      expect(stdout).to.contain(`${ok} this is another test`);
-      expect(stdout).to.contain('my-file.js passes');
-      expect(stdout).to.contain('my-test.js passes');
-      expect(stdout).to.contain('another-test.js passes');
+      expect(stdout).to.contain('5 passing');
     });
   });
 
@@ -73,20 +59,18 @@ describe('acceptance - success', function() {
     ];
     return run(args).then(({ stdout, stderr }) => {
       expect(stdout).to.be.empty;
-      expect(stderr).to.contain('Missing argument value: eslint-args');
+      expect(stderr).to.contain('Not enough arguments following: eslint-args');
     });
   });
 
   it('handles eslint debug', function() {
     let args = [
-      '--eslint-args="--debug **/*.js"'
+      '--eslint-args=\\"--debug **/*.js\\"'
     ];
     return run(args, workingDir).then(({ stdout, stderr }) => {
       expect(stdout).to.contain(`${ok} this is my test`);
       expect(stdout).to.contain(`${ok} this is another test`);
-      expect(stdout).to.contain('my-file.js passes');
-      expect(stdout).to.contain('my-test.js passes');
-      expect(stdout).to.contain('another-test.js passes');
+      expect(stdout).to.contain('2 passing');
 
       expect(stderr).to.contain('eslint:glob-utils Creating list of files to process.');
     });
