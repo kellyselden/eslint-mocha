@@ -1,7 +1,7 @@
 language: node_js
 node_js:
   - "node"
-  - "6"
+  - "8"
 
 branches:
   only:
@@ -11,13 +11,6 @@ branches:
 cache:
   directories:
     - node_modules
-
-before_install:
-  - npm config set spin false
-  - if [ "$TRAVIS_NODE_VERSION" = "6" ]; then
-      npm install -g npm@6;
-      npm --version;
-    fi
 
 script:
   - npm run cover
