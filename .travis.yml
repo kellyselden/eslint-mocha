@@ -17,3 +17,12 @@ script:
 
 after_script:
   - cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
+
+deploy:
+  provider: npm
+  email: kellyselden@gmail.com
+  api_key:
+    secure: l2Zzu+N/FaQJGrznztExD3uXGB6BPXkRMMmlYkIX07CglN1y1eECg+NKZUPlzHyNz4uKKrUh5kLOOUIgM0jX/kuNEb0wZ42jMLz5TO/ux7/83Z8UVwTiIHWGIwQomWEJzh/h9WAQ4DWNG1fig6Hv1E6PV/H2GKawOJp12KiQ4liDO1yQ5NtLPvVe5yRzik0ox1Oow9Y+1GSBy0Z3iB8T0igCLV/BVRTyzA1dAJc0nNUdBj1f2CTbaaEs/AmE/9/KsGkncrbdFkw/+bKvmrWMj6m1AxvrfXpdPTUOBZSS/wEI1VknYOvG4ulGw+xJ2B589EJciShhEGJ6sHAJLYjWJpXuRyDAzHv/s/vj1Q3lExYjpHdDpnVRh7l6amRuNS9ph4jbuNo32n+W3oMDgPht55FGiPkB9q1F1viq8lJ65C0thdlrSLZx9CkKgUjxlX+0hpT7KhcUwLK4Z9kdHK+DbB53NCyS+R5eFdwNggl1OZ2n7w7uAcGW7A2x6BzaVJobDfScsZZ9Ts+xjBYQa/9/99EBpWpR+PnmvsL8VUhiwWZ8rWC9s//ZrqlOCftri86k4Ezh7SZBE31Fzntgekj8p9pPOzjLNHMVWT7o+YjTue0DXaOl0UWj/fwzK3BRbSVs0MGUzGHIp41Mr2FDszNl1e5Z8xQw3xw3GY4MpVTrqg0=
+  on:
+    tags: true
+    repo: kellyselden/eslint-mocha
