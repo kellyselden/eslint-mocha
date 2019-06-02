@@ -5,7 +5,6 @@
 [![Code Climate](https://codeclimate.com/github/kellyselden/eslint-mocha/badges/gpa.svg)](https://codeclimate.com/github/kellyselden/eslint-mocha)
 [![Coverage Status](https://coveralls.io/repos/kellyselden/eslint-mocha/badge.svg?branch=master&service=github)](https://coveralls.io/github/kellyselden/eslint-mocha?branch=master)
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/kellyselden/eslint-mocha.svg)](https://greenkeeper.io/)
 [![npm version](https://badge.fury.io/js/eslint-mocha.svg)](https://badge.fury.io/js/eslint-mocha)
 [![dependencies Status](https://david-dm.org/kellyselden/eslint-mocha/status.svg)](https://david-dm.org/kellyselden/eslint-mocha)
 [![devDependencies Status](https://david-dm.org/kellyselden/eslint-mocha/dev-status.svg)](https://david-dm.org/kellyselden/eslint-mocha?type=dev)
