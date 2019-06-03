@@ -13,6 +13,9 @@ script:
 after_script:
   - cat coverage/lcov.info | node_modules/coveralls/bin/coveralls.js
 
+before_deploy:
+  - npm ci
+
 deploy:
   provider: npm
   email: kellyselden@gmail.com
