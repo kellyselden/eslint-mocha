@@ -11,7 +11,7 @@ export default (args, workingDir) => {
       originalWorkingDir = process.cwd();
       process.chdir(workingDir);
     }
-
+debugger;
     exec(`node ${bin} ${args}`, (err, stdout, stderr) => {
       if (originalWorkingDir) {
         process.chdir(originalWorkingDir);

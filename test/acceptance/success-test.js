@@ -63,11 +63,12 @@ describe('acceptance - success', function() {
     });
   });
 
-  it('handles eslint debug', function() {
+  it.only('handles eslint debug', function() {
     let args = [
-      '--eslint-args=\\"--debug **/*.js\\"'
+      '--eslint-args="--debug **/*.js"'
     ];
     return run(args, workingDir).then(({ stdout, stderr }) => {
+      expect(stderr).to.contain('eslint:glob-utils Creating list of files to process.');
       expect(stdout).to.contain(`${ok} this is my test`);
       expect(stdout).to.contain(`${ok} this is another test`);
       expect(stdout).to.contain('2 passing');
